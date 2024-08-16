@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactjs-app-deploy
+  namespace: default
+  labels:
+    app: reactjs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reactjs-app
+  template:
+    metadata:
+      labels:
+        app: reactjs-app
+    spec:
+      containers:
+      - name: reactjs-app-container
+        image: dineshsai14211/reactjs-app-img:1
+        ports:
+        - containerPort: 3000
